@@ -45,10 +45,16 @@ export default function LoginPage() {
                 setError("Invalid email address");
                 return;
             }
+            if (validateEmail(user.email)) {
+                setError("");
+            }
 
             if (!validatePassword(user.password)) {
                 setError("Password must be at least 8 characters long");
                 return;
+            }
+            if (validatePassword(user.password)) {
+                setError("");
             }
 
 
