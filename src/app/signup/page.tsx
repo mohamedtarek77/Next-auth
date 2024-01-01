@@ -12,7 +12,7 @@ import { toast } from "react-hot-toast";
 export default function signup() {
 
   const router = useRouter!();
-  const [user, setUser] = React.useState!({
+  const [user, setUser] = useState!({
     email: "",
     password: "",
     username: "",
@@ -22,7 +22,7 @@ export default function signup() {
   const [loading, setLoading] = useState!(false);
 
 
-  const [error, setError] = React.useState({
+  const [error, setError] = useState({
     emailError: "",
     passwordError: ""
   })
