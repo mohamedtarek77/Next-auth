@@ -21,7 +21,11 @@ export default function LoginPage() {
     const [buttonDisabled, setButtonDisabled] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
 
-    const [error,setError] =React.useState('')
+    const [error, setError] = React.useState({
+        emailError: "",
+        passwordError: ""
+      })
+    
 
 
     const validateEmail = (email:any) => {
@@ -41,21 +45,55 @@ export default function LoginPage() {
     const onLogin = async () => {
 
         try {
-            if (!validateEmail(user.email)) {
-                setError("Invalid email address");
-                return;
-            }
-            if (validateEmail(user.email)) {
-                setError("");
-            }
 
-            if (!validatePassword(user.password)) {
-                setError("Password must be at least 8 characters long");
-                return;
-            }
-            if (validatePassword(user.password)) {
-                setError("");
-            }
+
+       if (!validateEmail(user.email)) {
+        // setError({ ...error, emailError: 'Invalid email address' });
+
+        setError((prev)=>{
+          return(
+            {...prev,emailError:"Invalid email address"}
+          )
+        });
+
+       
+        // setError((prev)=>{
+        //   return(
+        //     {...prev,emailError:""}
+        //   )
+        // });
+
+
+        return;
+      }
+
+      if(validateEmail(user.email)){
+          setError((prev)=>{
+          return(
+            {...prev,emailError:""}
+          )
+        });
+      }
+
+      if (!validatePassword(user.password)) {
+
+        // setError({ ...error, emailError: 'Password must be at least 8 characters long' });
+        setError((prev)=>{
+          return(
+            {...prev,passwordError:"Password must be at least 8 characters long"}
+          )
+        });
+
+        return;
+      }
+
+      if(validatePassword(user.password)){
+        setError((prev)=>{
+        return(
+          {...prev,passwordError:""}
+        )
+      });
+    }
 
 
             setLoading(true);
@@ -71,7 +109,7 @@ export default function LoginPage() {
 
             // toast.error(error.message);
             // Show the forgot password button on login failure
-             setError("You have entered a wrong password");
+            //  setError("You have entered a wrong password");
         } finally {
             setLoading(false);
         }
@@ -88,7 +126,6 @@ export default function LoginPage() {
             toast.success("Check your email to reset the password");
 
             
-            setError("");
 
 
         } catch (error: any) {
