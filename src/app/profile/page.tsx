@@ -45,9 +45,9 @@ const Profile = () => {
       <div className="flex flex-col items-center justify-center h-auto w-80 bg-lime-500 border-2 rounded-lg border-lime-900 my-10 py-10">
 
         {data && <div className='flex flex-col items-start justify-center '>
-          <h4>usernmae: {(data as any)?.username}  </h4>
-          <h4>userId: {(data as any)?._id}  </h4>
-          <h4>email: {(data as any)?.email}  </h4>
+          <h4>  <span className='text-black font-bold	' > usernmae:</span>  {(data as any)?.username}  </h4>
+          <h4>  <span className='text-black font-bold	' > userId:</span>  {(data as any)?._id}  </h4>
+          <h4>  <span className='text-black font-bold	' > email:</span>  {(data as any)?.email}  </h4>
 
         </div>}
 

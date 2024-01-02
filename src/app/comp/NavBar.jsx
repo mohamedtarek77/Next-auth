@@ -12,13 +12,16 @@ const NavBar = () => {
     const router = useRouter();
 
     return (
-        <nav className='bg-lime-400'>
+        <nav className='bg-lime-900'>
 
-            <button>
+            <ul className='flex flex-row items-center justify-center w-auto'>
 
-                <Link href="/profile"> profile </Link>
+                <li className='px-4'> <button className='text-white'><Link href="/profile"> profile </Link></button> </li>
+                <li className='px-4'> <button className='text-white'><Link href="/"> Home </Link></button> </li>
 
-            </button>
+            </ul>
+
+
 
         </nav>
     )
