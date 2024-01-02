@@ -116,29 +116,31 @@ export default function LoginPage() {
         }
     }
 
-    const forgotPassword = async () => {
-        try {
-            setLoading(true);
-            const response = await axios.post("/api/users/login", user);
-
-            // document.getElementById("forgot").innerHTML = "Check your email to rest the password";
-            console.log("forgot password check your email", response.data);
-
-            toast.success("Check your email to reset the password");
 
 
+    // const forgotPassword = async () => {
+    //     try {
+    //         setLoading(true);
+    //         const response = await axios.post("/api/users/login", user);
+
+    //         // document.getElementById("forgot").innerHTML = "Check your email to rest the password";
+    //         console.log("forgot password check your email", response.data);
+
+    //         toast.success("Check your email to reset the password");
 
 
-        } catch (error: any) {
-            // console.log("Login failed", error.message);
-            toast.error(error.message);
 
-            console.log("Forgot password failed", error.message);
-            toast.error("Forgot password failed. Please try again.");
-        } finally {
-            setLoading(false);
-        }
-    }
+
+    //     } catch (error: any) {
+    //         // console.log("Login failed", error.message);
+    //         toast.error(error.message);
+
+    //         console.log("Forgot password failed", error.message);
+    //         toast.error("Forgot password failed. Please try again.");
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // }
 
 
 
