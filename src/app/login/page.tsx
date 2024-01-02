@@ -2,10 +2,10 @@
 
 "use client";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import toast   from "react-hot-toast";
+import toast from "react-hot-toast";
 
 
 
@@ -13,29 +13,30 @@ export default function LoginPage() {
 
 
     const router = useRouter();
-    const [user, setUser] = React.useState({
+    const [user, setUser] = useState({
         email: "",
         password: "",
 
     })
-    const [buttonDisabled, setButtonDisabled] = React.useState(false);
-    const [loading, setLoading] = React.useState(false);
+    const [buttonDisabled, setButtonDisabled] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-    const [error, setError] = React.useState({
+    const [error, setError] = useState({
         emailError: "",
         passwordError: ""
-      })
-    
+    })
 
 
-    const validateEmail = (email:any) => {
+
+
+    const validateEmail = (email: any) => {
         // You can implement your email validation logic here
         // For a simple check, we are using a regular expression
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
 
-    const validatePassword = (password:any) => {
+    const validatePassword = (password: any) => {
         // You can implement your password validation logic here
         // For a simple check, we are requiring a minimum length of 8 characters
         return password.length >= 8;
@@ -47,53 +48,53 @@ export default function LoginPage() {
         try {
 
 
-       if (!validateEmail(user.email)) {
-        // setError({ ...error, emailError: 'Invalid email address' });
+            if (!validateEmail(user.email)) {
+                // setError({ ...error, emailError: 'Invalid email address' });
 
-        setError((prev)=>{
-          return(
-            {...prev,emailError:"Invalid email address"}
-          )
-        });
-
-       
-        // setError((prev)=>{
-        //   return(
-        //     {...prev,emailError:""}
-        //   )
-        // });
+                setError((prev) => {
+                    return (
+                        { ...prev, emailError: "Invalid email address" }
+                    )
+                });
 
 
-        return;
-      }
+                // setError((prev)=>{
+                //   return(
+                //     {...prev,emailError:""}
+                //   )
+                // });
 
-      if(validateEmail(user.email)){
-          setError((prev)=>{
-          return(
-            {...prev,emailError:""}
-          )
-        });
-      }
 
-      if (!validatePassword(user.password)) {
+                return;
+            }
 
-        // setError({ ...error, emailError: 'Password must be at least 8 characters long' });
-        setError((prev)=>{
-          return(
-            {...prev,passwordError:"Password must be at least 8 characters long"}
-          )
-        });
+            if (validateEmail(user.email)) {
+                setError((prev) => {
+                    return (
+                        { ...prev, emailError: "" }
+                    )
+                });
+            }
 
-        return;
-      }
+            if (!validatePassword(user.password)) {
 
-      if(validatePassword(user.password)){
-        setError((prev)=>{
-        return(
-          {...prev,passwordError:""}
-        )
-      });
-    }
+                // setError({ ...error, emailError: 'Password must be at least 8 characters long' });
+                setError((prev) => {
+                    return (
+                        { ...prev, passwordError: "Password must be at least 8 characters long" }
+                    )
+                });
+
+                return;
+            }
+
+            if (validatePassword(user.password)) {
+                setError((prev) => {
+                    return (
+                        { ...prev, passwordError: "" }
+                    )
+                });
+            }
 
 
             setLoading(true);
@@ -125,7 +126,7 @@ export default function LoginPage() {
 
             toast.success("Check your email to reset the password");
 
-            
+
 
 
         } catch (error: any) {
@@ -147,7 +148,7 @@ export default function LoginPage() {
         } else {
             setButtonDisabled(true);
         }
-    }, [user]); 
+    }, [user]);
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -165,8 +166,11 @@ export default function LoginPage() {
                             value={user.email}
                             onChange={(e) => setUser({ ...user, email: e.target.value })}
                             placeholder="email"
-                            required  
+                            required
                         />
+
+                        {error.emailError && <p className="text-red-800">{error.emailError}</p>}
+
                         <label htmlFor="password">password</label>
                         <input
                             className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
@@ -175,14 +179,27 @@ export default function LoginPage() {
                             value={user.password}
                             onChange={(e) => setUser({ ...user, password: e.target.value })}
                             placeholder="password"
-                            required  
+                            required
                         />
+
+                        {error.passwordError && <p className="text-red-800">{error.passwordError}</p>}
+
                         <button
                             onClick={onLogin}
                             className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">Log In </button>
+
+                        {/* {error &&  (
+                        <>
                        
-             
-               
+                        <button
+                            onClick={forgotPassword }
+                            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">forgot password ?</button>
+
+
+                        <p id="forgot" > </p>
+                       </>
+                        )} */}
+
 
                         <p className="py-2">Don't have an account?</p>
 
