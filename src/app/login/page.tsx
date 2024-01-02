@@ -113,10 +113,10 @@ export default function LoginPage() {
             //  setError("You have entered a wrong password");
         } finally {
             setLoading(false);
-            
+
         }
     }
-  
+
 
 
 
@@ -206,7 +206,9 @@ export default function LoginPage() {
                         )} */}
 
 
-                        <p className="py-2">Don't have an account?</p>
+                        {/* <p className="py-2">Don't have an account?</p> */}
+
+                        <p className="py-2">Don&apos;t have an account?</p>
 
                         <button
 
