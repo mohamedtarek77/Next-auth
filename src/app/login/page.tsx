@@ -103,7 +103,8 @@ export default function LoginPage() {
 
             toast.success("Login success");
 
-            router.push("/profile");
+            // router.push("/profile");
+            router.push("/");
         } catch (error: any) {
             console.log("Login failed", error.message);
             toast.error("Login failed. Please check your email and password.");
@@ -159,6 +160,7 @@ export default function LoginPage() {
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
 
             <div className="flex flex-col items-center justify-center h-auto w-80 bg-lime-500 border-2 rounded-lg border-lime-900 my-10 py-10">
+              
                 <h1>{loading ? "Processing" : "Login"}</h1>
                 <hr />
                 {!loading &&
