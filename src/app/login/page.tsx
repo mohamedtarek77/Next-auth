@@ -181,7 +181,7 @@ export default function LoginPage() {
                             onClick={onLogin}
                             className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">Log In </button>
                        
-                       {/* {error &&  (
+                       {error &&  (
                         <>
                        
                         <button
@@ -191,7 +191,7 @@ export default function LoginPage() {
 
                         <p id="forgot" > </p>
                        </>
-                        )} */}
+                        )}
                
 
                         <p className="py-2">Don't have an account?</p>
