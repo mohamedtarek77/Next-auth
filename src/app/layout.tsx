@@ -1,6 +1,12 @@
+
+"use client"
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
+
+
 
 import NavBar from '@/app/comp/NavBar'
 import Footer from "@/app/comp/Footer"
@@ -17,12 +23,21 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  // const router = useRouter();
+  const pathname  = usePathname()
+
+  const isHomeOrProfilePage = pathname  === '/' || pathname  === '/profile'
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NavBar />
+
+        {isHomeOrProfilePage && <NavBar />
+        }
         {children}
-        <Footer />
+
+        {isHomeOrProfilePage && <Footer />}
       </body>
     </html>
   )

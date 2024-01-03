@@ -5,6 +5,8 @@ import React from 'react'
 
 import { useRouter } from 'next/navigation'
 
+
+
 export default function Home() {
 
   const router = useRouter();
@@ -13,6 +15,8 @@ export default function Home() {
 
   return (
     <div className="flex items-center justify-center w-auto min-h-screen ">
+
+
 
     <div className="flex flex-row items-start justify-center h-96 w-96 bg-lime-500 border-2 rounded-lg border-lime-900 my-10 py-10">
       
@@ -32,6 +36,8 @@ export default function Home() {
 
         
          </div>
+
+
      
     
     </div>
